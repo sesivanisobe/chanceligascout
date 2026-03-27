@@ -48,58 +48,6 @@ function StatBar({ label, value, max, unit = "" }) {
 }
 
 function Spinner({ size = 16 }) {
-  return <div style={{ width: size, height: size, border: `2px solid ${SLAVIA_RED}44`, borderTop: `2px solid ${SLAVIA_RED}`, borderRadius: "50%", animation: "spin 0.8s linear
-cat > src/App.jsx << 'EOF'
-import { useState } from "react";
-
-const SLAVIA_RED = "#cc0000";
-const ACCENT = "#e8001e";
-
-const FLAGS = {
-  "Czech Republic": "🇨🇿", "Czechia": "🇨🇿", "Slovakia": "🇸🇰", "Poland": "🇵🇱",
-  "Germany": "🇩🇪", "France": "🇫🇷", "Spain": "🇪🇸", "Italy": "🇮🇹",
-  "Portugal": "🇵🇹", "Brazil": "🇧🇷", "Argentina": "🇦🇷", "Nigeria": "🇳🇬",
-  "Ghana": "🇬🇭", "Ivory Coast": "🇨🇮", "Côte d'Ivoire": "🇨🇮", "Senegal": "🇸🇳",
-  "Morocco": "🇲🇦", "Serbia": "🇷🇸", "Croatia": "🇭🇷", "Slovenia": "🇸🇮",
-  "Hungary": "🇭🇺", "Romania": "🇷🇴", "Ukraine": "🇺🇦", "Greece": "🇬🇷",
-  "Netherlands": "🇳🇱", "Belgium": "🇧🇪", "Austria": "🇦🇹", "Denmark": "🇩🇰",
-  "Guinea": "🇬🇳", "Cameroon": "🇨🇲", "Liberia": "🇱🇷", "Gambia": "🇬🇲",
-  "Kosovo": "🇽🇰", "Albania": "🇦🇱", "Bulgaria": "🇧🇬", "Georgia": "🇬🇪",
-};
-
-function getFlag(nationality) {
-  return FLAGS[nationality] || "🌍";
-}
-
-const POSITIONS = {
-  "Goalkeeper": "Brankář",
-  "Defender": "Obránce",
-  "Midfielder": "Záložník",
-  "Attacker": "Útočník",
-};
-
-const DEMO_PLAYERS = [
-  { id: 1, name: "Tomáš Holeš", position: "Defender", age: 32, nationality: "Czech Republic", photo: "TH", photoUrl: null, number: 3, stats: { zapasy: 22, goly: 2, asistence: 3, strelba: 1.2, uspesnost_prihravek: 87, ziskana_micka: 7.2, souboje_vyhrane: 64, zlute_karty: 4, oceneni: 7.1 } },
-  { id: 2, name: "Lukáš Provod", position: "Midfielder", age: 29, nationality: "Czech Republic", photo: "LP", photoUrl: null, number: 17, stats: { zapasy: 19, goly: 6, asistence: 5, strelba: 2.8, uspesnost_prihravek: 81, ziskana_micka: 4.1, souboje_vyhrane: 51, zlute_karty: 3, oceneni: 7.6 } },
-  { id: 3, name: "Ivan Schranz", position: "Attacker", age: 32, nationality: "Slovakia", photo: "IS", photoUrl: null, number: 26, stats: { zapasy: 24, goly: 11, asistence: 6, strelba: 3.1, uspesnost_prihravek: 75, ziskana_micka: 2.3, souboje_vyhrane: 45, zlute_karty: 2, oceneni: 7.7 } },
-];
-
-function StatBar({ label, value, max, unit = "" }) {
-  const pct = Math.min((value / max) * 100, 100);
-  return (
-    <div style={{ marginBottom: 12 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-        <span style={{ fontSize: 12, color: "rgba(255,255,255,0.5)" }}>{label}</span>
-        <span style={{ fontSize: 12, fontWeight: 700, color: "#fff" }}>{value}{unit}</span>
-      </div>
-      <div style={{ height: 4, background: "rgba(255,255,255,0.08)", borderRadius: 2, overflow: "hidden" }}>
-        <div style={{ height: "100%", width: `${pct}%`, background: `linear-gradient(90deg, ${ACCENT}aa, ${ACCENT})`, borderRadius: 2, transition: "width 0.8s cubic-bezier(0.34,1.56,0.64,1)" }} />
-      </div>
-    </div>
-  );
-}
-
-function Spinner({ size = 16 }) {
   return <div style={{ width: size, height: size, border: `2px solid ${SLAVIA_RED}44`, borderTop: `2px solid ${SLAVIA_RED}`, borderRadius: "50%", animation: "spin 0.8s linear infinite", flexShrink: 0 }} />;
 }
 
