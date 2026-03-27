@@ -1,6 +1,8 @@
 export default async (req, context) => {
   const apiKey = Netlify.env.get("FOOTBALL_API_KEY");
-  const apiUrl = `https://v3.football.api-sports.io/players?team=560&season=2024&page=1`;
+  
+  // /players/squads vrací aktuální soupisku týmu
+  const apiUrl = `https://v3.football.api-sports.io/players/squads?team=560`;
 
   const response = await fetch(apiUrl, {
     headers: { "x-apisports-key": apiKey },
